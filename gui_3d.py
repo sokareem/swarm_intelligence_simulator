@@ -438,8 +438,12 @@ class SwarmApp3D:
         self.num_rewards_slider_ax = plt.axes([0.25, 0.15, 0.65, 0.03], facecolor='lightgoldenrodyellow')
         self.num_rewards_slider = Slider(self.num_rewards_slider_ax, 'Num Rewards', 1, 50, valinit=len(self.simulation.rewards), valstep=1)
 
+        # Button to toggle trails on and off
+        self.toggle_trails_button_ax = plt.axes([0.4, 0.075, 0.2, 0.05])
+        self.toggle_trails_button = Button(self.toggle_trails_button_ax, 'Toggle Trails')
+
         # Button to apply agent/reward changes
-        self.update_button_ax = plt.axes([0.4, 0.05, 0.2, 0.05])
+        self.update_button_ax = plt.axes([0.4, 0.025, 0.2, 0.05])
         self.update_button = Button(self.update_button_ax, 'Update')
 
         # Connect the sliders and button to their update functions
@@ -447,6 +451,7 @@ class SwarmApp3D:
         self.cohesion_slider.on_changed(self.update_cohesion_strength)
         self.separation_slider.on_changed(self.update_separation_threshold)
         self.update_button.on_clicked(self.update_num_agents_and_rewards)
+        self.toggle_trails_button.on_clicked(self.toggle_trails)
 
         plt.show()
 
@@ -477,6 +482,11 @@ class SwarmApp3D:
         if new_num_rewards != len(self.simulation.rewards):
             # Update the rewards list in the simulation
             self.simulation.rewards = [np.random.rand(3) * 100 for _ in range(new_num_rewards)]
+    
+    def toggle_trails(self, event):
+        # Toggle the tracing feature for all agents in the simulation
+        for agent in self.simulation.agents:
+            agent.tracing = not agent.tracing
 
 
 
