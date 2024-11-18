@@ -81,3 +81,25 @@ Real-time visualizations of the rewards collected and agent roles are displayed 
 ## License
 This project is licensed under the MIT License.
 
+# Swarm Intelligence Simulator (Ant colony)
+
+This README explains the code in detail, highlighting the key components and their functionalities. The code simulates an ant colony optimization algorithm using Pygame for visualization. The simulation includes:
+
+- Ants (Agents) with different roles (worker and caretaker)
+- A pheromone map that agents deposit and sense
+- Obstacles to navigate around
+- Food sources that agents collect and store in a nest
+- Energy management and ant birth mechanism (birth occurs when nest has enough food and population is below the maximum)
+- Enhanced birth parameters when population is low
+- States for agents (scouting, foraging, returning, resting)
+- Caretaker behavior to help other ants with low energy
+- Visualization of the simulation using Pygame
+
+The main classes are:
+- **Pheromone**: Handles the pheromone map including depositing and evaporating pheromones.
+- **Nest**: Represents the nest where ants store food and where new ants are born.
+- **Agent**: Represents individual ants with their behavior, states, and attributes.
+- **SwarmSimulation**: Handles the simulation logic, including updating the state of ants, adding new food sources, and managing the pheromone map.
+- **SwarmApp**: Integrates the simulation with Pygame for visualization.
+
+The README covers the major components, updates, functionality, and classes, providing a comprehensive understanding of the ant colony optimization simulation implemented in this code.
