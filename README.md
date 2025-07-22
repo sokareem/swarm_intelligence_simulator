@@ -81,25 +81,74 @@ Real-time visualizations of the rewards collected and agent roles are displayed 
 ## License
 This project is licensed under the MIT License.
 
-# Swarm Intelligence Simulator (Ant colony)
+# Ant Colony Optimization Simulation (Reinforcement Learning & Adversarial Dynamics)
 
-This README explains the code in detail, highlighting the key components and their functionalities. The code simulates an ant colony optimization algorithm using Pygame for visualization. The simulation includes:
+This project is an advanced Ant Colony Optimization (ACO) simulation that incorporates Reinforcement Learning (RL) and adversarial dynamics. It models the behavior of two competing ant colonies, each striving for dominance and resource control. The simulation provides a dynamic and visually rich environment to observe emergent intelligence and inter-colony conflict.
 
-- Ants (Agents) with different roles (worker and caretaker)
-- A pheromone map that agents deposit and sense
-- Obstacles to navigate around
-- Food sources that agents collect and store in a nest
-- Energy management and ant birth mechanism (birth occurs when nest has enough food and population is below the maximum)
-- Enhanced birth parameters when population is low
-- States for agents (scouting, foraging, returning, resting)
-- Caretaker behavior to help other ants with low energy
-- Visualization of the simulation using Pygame
+## Features
 
-The main classes are:
-- **Pheromone**: Handles the pheromone map including depositing and evaporating pheromones.
-- **Nest**: Represents the nest where ants store food and where new ants are born.
-- **Agent**: Represents individual ants with their behavior, states, and attributes.
-- **SwarmSimulation**: Handles the simulation logic, including updating the state of ants, adding new food sources, and managing the pheromone map.
-- **SwarmApp**: Integrates the simulation with Pygame for visualization.
+- **Reinforcement Learning (DQN)**: Ants learn optimal foraging and survival strategies using a Deep Q-Network (DQN). They adapt their behavior based on rewards and penalties, leading to intelligent decision-making.
+- **Adversarial Nests**: Two distinct ant colonies (Blue and Red) compete for shared food resources and territory. Each colony has its own nest and agents.
+- **Emergent Evolution (Warrior Ants)**: Colonies can unlock a new class of specialized ants, the "Warrior Ants," by accumulating sufficient food resources. Warrior Ants possess enhanced combat capabilities.
+- **Dynamic Visuals**:
+  - **Fading Ant Trails**: Ants leave subtle, fading trails that visually represent pheromone paths and their recent movements.
+  - **Dynamic Ant Appearance**: Ant colors subtly change based on their energy levels, providing visual cues to their vitality.
+  - **Pulsating Nests**: Nests glow with an intensity proportional to their stored food, reflecting the colony's prosperity.
+  - **Food Deposit Cues**: A visual flash at the nest indicates successful food deposits, highlighting the purpose of foraging.
+  - **Warrior Unlocked Indicators**: Nests display a visual marker when Warrior Ants have been unlocked.
+- **Interactive Elements**: Users can dynamically add new food sources (left-click) and obstacles (right-click) to the environment, allowing for real-time experimentation and observation of the swarm's adaptation.
+- **Inter-Colony Conflict**: Ants from opposing colonies engage in direct combat, losing energy upon collision. Ants with zero energy are eliminated.
+- **Victory Conditions**: The simulation concludes when one colony achieves dominance, either by eliminating all opposing ants or by demonstrating overwhelming resource superiority while the opponent is depleted. This signifies the "completion of the great work."
 
-The README covers the major components, updates, functionality, and classes, providing a comprehensive understanding of the ant colony optimization simulation implemented in this code.
+## How It Works
+
+The simulation models a 2D environment where ants from two colonies interact with each other, food sources, and obstacles. Key mechanisms include:
+
+- **Pheromone System**: Ants deposit and sense pheromones to guide their foraging paths. Pheromones evaporate over time, reinforcing efficient routes.
+- **Energy Management**: Ants consume energy for movement and actions. They must return to their nest to replenish energy by consuming stored food.
+- **DQN-driven Behavior**: Each ant's actions (moving towards nest/food, scouting, avoiding obstacles, staying) are determined by a trained DQN, which learns to maximize rewards.
+- **Specialized Roles**: Ants can be Workers (foraging), Caretakers (supporting low-energy ants), or Warriors (combat-focused).
+- **Dynamic Environment**: Obstacles periodically reset, forcing continuous adaptation from the colonies.
+
+## Getting Started
+
+### Prerequisites
+- Python 3.10+
+- Required Libraries: `pygame`, `pygame_gui`, `numpy`, `matplotlib`, `pandas`, `torch`
+
+### Installation
+1. Clone this repository.
+2. Create and activate a virtual environment:
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+3. Install the required libraries:
+   ```sh
+   pip install pygame pygame_gui numpy matplotlib pandas torch
+   ```
+
+## Running the Simulation
+
+To run the advanced Ant Colony Optimization simulation:
+
+```sh
+venv/bin/python3 ant_colony_nn.py
+```
+
+Upon running the script, the simulation window will open, displaying the two competing ant colonies. Use mouse clicks to interact with the environment:
+- **Left-click**: Add a new food source.
+- **Right-click**: Add a new obstacle.
+
+Observe how the colonies adapt, forage, and engage in conflict. Watch for the emergence of Warrior Ants and the visual cues indicating nest prosperity and food deposits.
+
+## Future Enhancements
+- Implement more sophisticated inter-colony combat mechanics.
+- Explore different RL algorithms for ant behavior.
+- Introduce environmental factors like weather or terrain.
+- Develop a more complex research tree for new ant classes.
+- Add a graphical display for real-time learning metrics (loss, reward).
+
+## License
+This project is licensed under the MIT License.
+
